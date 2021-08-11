@@ -1,20 +1,30 @@
 import React, { Component } from 'react'
 import './style.css'
+class FormularioCadastro extends Component{
 
-export default class FormularioCadastro extends Component{
+    constructor(){
+        super()
+        this.titulo = ""
+    }
+
+    handleMudancaTitulo(e){
+        this.titulo = e.target.value
+        console.log(this.titulo)
+    }
+
     render(){
         return (
             <form className="form-cadastro">
                 <input 
                     className="form-cadastro_input" 
                     type="text" 
-                    placeholder="Título" />
-                <br />
+                    placeholder="Título"
+                    onChange={this.handleMudancaTitulo.bind(this)}
+                    />
                 <textarea 
                     className="form-cadastro_input" 
                     rows={10} cols={25} 
                     placeholder="Escreva sua nota" />
-                <br />
                 <button 
                     className="form-cadastro_submit">
                     Criar nota
@@ -23,3 +33,4 @@ export default class FormularioCadastro extends Component{
         )
     }
 }
+export default FormularioCadastro
