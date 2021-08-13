@@ -5,18 +5,45 @@ import './assets/App.css'
 
 export default class App extends Component {
 
+  // o state é a forma como o react trabalha com atualização
+  // dos componentes. Iniciamos com ele vazio
   constructor(){
     super()
-    this.notas = []
+    // forma mais "primitiva" de iniciar o estado de uma propriedade
+    /* this.notas = []
+    this.state = {} */ 
+    // forma mais moderna de iniciar o estado de uma propriedade
+    this.state = {
+      notas:[]
+    }
   }
 
   // função para criar a nota será
   // chamada internamente em algum componente
   // cria um novo objeto com o título e o texto
   // e popula o array de notas desta classe
+
+  // ao criar a nota, chamamos um setter do state
+  // que fazemos com que o react assuma um novo estado
+  // atualizando as notas que foram criadas
   criarNota(titulo, texto){
     const novaNota = {titulo, texto}
-    this.notas.push(novaNota)
+
+    // forma mais "primitiva" passando o
+    // array de notas para o state do componente
+    /* this.notas.push(novaNota)
+    this.setState({
+      notas:this.notas
+    }) */
+
+    // forma mais moderna - atualizamos o state usando
+    // spread operator que junta as notas já existentes
+    // com a nova nota criada.
+    // esta é a forma mais moderna usada em projetos
+    const novoArray = [...this.state.notas, novaNota]
+    this.setState({
+      notas:novoArray
+    })
   }
 
   // tudo que estiver dentro do render() será
@@ -40,7 +67,7 @@ export default class App extends Component {
     return (
       <section className="conteudo">
         <FormularioCadastro criarNota={this.criarNota.bind(this)} />
-        <ListaDeNotas notas={this.notas} />
+        <ListaDeNotas notas={this.state.notas} />
       </section>
     )
   };

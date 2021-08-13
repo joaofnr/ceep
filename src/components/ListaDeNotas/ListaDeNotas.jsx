@@ -15,6 +15,9 @@ export default class ListaDeNotas extends Component{
     // apesar de usar o props, como não usamos propriedades ou métodos
     // específicos desta classe, o componente entende que o props existe
     // mesmo sem o método construtor
+
+    // passamos para o componente CardNota as propriedades do objeto
+    // atualmente sendo percorrido no loop
     render() {
         return (
             <ul 
@@ -25,7 +28,10 @@ export default class ListaDeNotas extends Component{
                       key={index}
                       className="lista-notas_item"
                       >
-                      <CardNota />
+                      <CardNota 
+                        titulo={nota.titulo} 
+                        texto={nota.texto}
+                       />
                     </li>
                   )
                 }
