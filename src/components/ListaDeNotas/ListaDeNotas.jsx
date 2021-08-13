@@ -11,6 +11,10 @@ export default class ListaDeNotas extends Component{
     // o index de um elemento pode ser referenciado automaticamente e,
     // dentro do map, o react pede para usar o atributo key,
     // para identificar o elemento unicamente dentro do loop
+
+    // apesar de usar o props, como não usamos propriedades ou métodos
+    // específicos desta classe, o componente entende que o props existe
+    // mesmo sem o método construtor
     render() {
         return (
             <ul 

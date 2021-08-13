@@ -30,6 +30,9 @@ class FormularioCadastro extends Component{
         this.texto = e.target.value
     }
 
+    // o criarNota foi injetado nas props pelo componente pai,
+    // tornando assim possível chamar uma função que não pertence
+    // a esta classe
     _criarNota(e){
         e.preventDefault()
         e.stopPropagation()
